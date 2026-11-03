@@ -26,8 +26,6 @@ def get_player_name():
             return name
         print("please fill in your name")
 
-player_name = get_player_name()
-print("Welcome,", player_name)
 
 def show_status(name, energy, location, inventory):
     """print the player's current status."""
@@ -40,5 +38,33 @@ def show_status(name, energy, location, inventory):
     else:
         print("Inventory: empty")
 
-show_status("Sam", 5, "Beach", [])
-show_status("Sam", 4, "Jungle", ["rope", "lantern"])
+def main():
+    """Run the opening of the game"""
+    show_title()
+    player_name = get_player_name()
+
+    energy = 5
+    location = "Beach"
+    inventory = []
+
+    show_status(player_name, energy, location, inventory)
+
+if __name__ =="__main__":
+    main()
+
+def get_choice(options):
+    """show a number menu and return a valid choice as an int."""
+    while True:
+        for number, text in enumerate(options, start=1):
+            print(f"{number}. {text}")
+
+        answer = input("choose: ").strip()
+
+        if answer.isdigit():
+            choice = int(answer)
+            if 1 <= choice <= len(options):
+                return choice
+        print("please enter a number from 1 to", len(options))
+
+choice = get_choice(["Go to the Jungle", "Walk to the Old Bridge", "Quit"])
+print("You chose", choice)
