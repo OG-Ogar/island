@@ -1,0 +1,7 @@
+# Python creates these cache folders when files are run or tested.
+__pycache__/
+*.py[cod]
+
+# Keep local virtual environments out of version control.
+.venv/
+venv/
